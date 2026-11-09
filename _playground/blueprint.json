@@ -1,0 +1,48 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/",
+  "preferredVersions": {
+    "php": "8.2",
+    "wp": "latest"
+  },
+  "features": {
+    "networking": true
+  },
+  "steps": [
+    {
+      "step": "installTheme",
+      "themeData": {
+        "resource": "git:directory",
+        "url": "https://github.com/helpmark-pink/yohaku-design-theme",
+        "ref": "HEAD"
+      },
+      "options": {
+        "activate": true
+      },
+      "progress": {
+        "caption": "オリジナルテーマ「Yohaku design」を読み込んでいます"
+      }
+    },
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "blogname": "Yohaku design",
+        "blogdescription": "余白をデザインする会社（架空の会社です）",
+        "permalink_structure": "/%postname%/",
+        "timezone_string": "Asia/Tokyo"
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require_once '/wordpress/wp-load.php'; require_once get_template_directory() . '/_playground/demo-content.php';",
+      "progress": {
+        "caption": "お知らせとクリエイターを登録しています"
+      }
+    },
+    {
+      "step": "login",
+      "username": "admin",
+      "password": "password"
+    }
+  ]
+}
