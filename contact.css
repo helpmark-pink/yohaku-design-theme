@@ -1,0 +1,279 @@
+@charset "UTF-8";
+/* ==========================================================
+   お問い合わせページ専用のスタイル
+   (色・フォント・ヘッダー・フッターなどの共通部分は style.css を使う)
+   ========================================================== */
+:root {
+  --alert: #C2453A;            /* 必須マーク・エラーの色 */
+  --field-bg: rgba(255, 255, 255, .55);
+}
+
+.cpage { padding: 168px var(--gutter) 140px; }
+.cpage__inner { max-width: 920px; margin: 0 auto; }
+
+/* ==========================================================
+   見出し:CONTACT / お問い合わせ / 太い短線+細い線
+   ========================================================== */
+.chead__en {
+  font-family: var(--f-display);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+.chead__title {
+  margin-top: 14px;
+  font-family: var(--f-ja);
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 500;
+  letter-spacing: .06em;
+  line-height: 1.5;
+}
+.chead__rule {
+  position: relative;
+  height: 1px;
+  margin-top: 56px;
+  background: var(--line);
+}
+.chead__rule::before {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 64px; height: 2px;
+  background: var(--ink);
+}
+
+/* ==========================================================
+   入力 → 確認 → 完了 のステップ表示
+   ========================================================== */
+.csteps {
+  display: flex;
+  gap: 28px;
+  margin-top: 40px;
+  font-family: var(--f-display);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  counter-reset: step;
+}
+.csteps li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: .35;
+  transition: opacity .4s var(--ease);
+}
+.csteps li::before {
+  counter-increment: step;
+  content: "0" counter(step);
+  display: grid;
+  place-items: center;
+  width: 30px; height: 30px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 11px;
+}
+.csteps li span { font-family: var(--f-ja); font-weight: 500; letter-spacing: .04em; }
+.csteps li.is-current { opacity: 1; }
+.csteps li.is-current::before { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+/* ==========================================================
+   説明文
+   ========================================================== */
+.clead {
+  margin-top: 48px;
+  font-family: var(--f-ja);
+  font-size: 14px;
+  line-height: 2;
+}
+.clead__req { margin-top: 24px; font-size: 13px; color: var(--alert); }
+.req { color: var(--alert); margin-left: 2px; }
+
+/* ==========================================================
+   入力フォーム
+   ========================================================== */
+.cform { max-width: 640px; margin-top: 56px; }
+.cform__set { min-width: 0; border: 0; }
+/* 入力できない状態(fieldset に disabled が付いているとき) */
+.cform__set:disabled .cfield__input,
+.cform__set:disabled .cagree { cursor: not-allowed; }
+.cform__set:disabled .cfield__input:hover { border-color: var(--line); }
+.cform__set:disabled .cagree__box { opacity: .5; }
+.cfield + .cfield { margin-top: 40px; }
+.cfield__label {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--f-ja);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+.cfield__input {
+  display: block;
+  width: 100%;
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  background: var(--field-bg);
+  color: var(--ink);
+  font-family: var(--f-ja);
+  font-size: 15px;   /* 16px未満だとiPhoneで入力時に拡大されるので、スマホだけ下で16pxにする */
+  line-height: 1.7;
+  letter-spacing: .03em;
+  transition: border-color .3s, background-color .3s, box-shadow .3s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.cfield__input + .cfield__input { margin-top: 14px; }
+.cfield__input::placeholder { color: rgba(23, 24, 28, .38); }
+.cfield__input:hover { border-color: rgba(23, 24, 28, .45); }
+.cfield__input:focus {
+  outline: none;
+  border-color: var(--ink);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(44, 62, 158, .14);
+}
+textarea.cfield__input { min-height: 220px; resize: vertical; }
+/* エラーのとき */
+.cfield__input[aria-invalid="true"] { border-color: var(--alert); background: rgba(194, 69, 58, .05); }
+.cfield__error {
+  margin-top: 8px;
+  font-family: var(--f-ja);
+  font-size: 12px;
+  color: var(--alert);
+}
+.cfield__error:empty { display: none; }
+
+/* 個人情報の取り扱い */
+.cprivacy {
+  margin-top: 64px;
+  font-family: var(--f-ja);
+  font-size: 13px;
+  line-height: 2;
+}
+.cprivacy { scroll-margin-top: 120px; }
+.cprivacy b { font-weight: 700; }
+.cprivacy a {
+  border-bottom: 1px solid currentColor;
+  transition: color .3s;
+}
+.cprivacy a:hover { color: var(--indigo); }
+
+/* 同意するチェックボックス(本物のチェックボックスは見えなくして、四角を自作) */
+.cagree {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 28px;
+  font-family: var(--f-ja);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.cagree input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.cagree__box {
+  position: relative;
+  width: 24px; height: 24px;
+  border: 1px solid var(--ink);
+  background: var(--field-bg);
+  transition: background-color .25s;
+}
+.cagree__box::after {
+  content: "";
+  position: absolute;
+  left: 7px; top: 2px;
+  width: 7px; height: 13px;
+  border: solid var(--paper);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform .3s var(--ease);
+}
+.cagree input:checked + .cagree__box { background: var(--ink); }
+.cagree input:checked + .cagree__box::after { transform: rotate(45deg) scale(1); }
+.cagree input:focus-visible + .cagree__box { box-shadow: 0 0 0 3px rgba(44, 62, 158, .25); }
+
+/* ボタン */
+.cbtns { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 48px; }
+.cbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  min-width: 260px;
+  height: 56px;
+  padding: 0 28px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--f-ja);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .08em;
+  transition: background-color .35s, color .35s;
+}
+.cbtn span { font-family: var(--f-en); transition: transform .4s var(--ease); }
+.cbtn:hover:not(:disabled) { background: var(--indigo); }
+.cbtn:hover:not(:disabled) span { transform: translateX(4px); }
+.cbtn:focus-visible { outline: 2px solid var(--indigo); outline-offset: 3px; }
+.cbtn:disabled { background: rgba(23, 24, 28, .1); color: rgba(23, 24, 28, .38); cursor: not-allowed; }
+.cbtn--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.cbtn--ghost:hover:not(:disabled) { background: var(--ink); color: var(--paper); }
+.cbtn--ghost:hover:not(:disabled) span { transform: translateX(-4px); }
+
+/* ==========================================================
+   確認画面・完了画面
+   ========================================================== */
+.cstep[hidden] { display: none; }
+.cstep.is-in { animation: none; } /* 入力 → 確認 → 完了 の切りかえで、ふわっと出す演出は使わない(使うときは cFade .6s var(--ease) both に戻す) */
+@keyframes cFade {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.cconfirm { max-width: 760px; margin-top: 48px; border-top: 1px solid var(--ink); }
+.cconfirm__row {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--f-ja);
+  font-size: 14px;
+}
+.cconfirm__row dt { font-weight: 700; }
+.cconfirm__row dd { white-space: pre-wrap; word-break: break-word; }
+.cconfirm__row dd.is-empty { opacity: .4; }
+
+.cdone { margin-top: 56px; }
+.cdone__mark { width: 72px; height: 72px; }
+.cdone__title {
+  margin-top: 28px;
+  font-family: var(--f-display);
+  font-size: clamp(48px, 7vw, 96px);
+  font-weight: 900;
+  line-height: .95;
+  text-transform: uppercase;
+}
+.cdone__title i { font-family: var(--f-serif); font-weight: 400; text-transform: none; color: var(--indigo); }
+.cdone__text { margin-top: 28px; font-family: var(--f-ja); font-size: 14px; line-height: 2; }
+
+/* フッター上のバナー(.cbanner)は News ページでも使うので style.css に書いている */
+
+/* ==========================================================
+   スマホ
+   ========================================================== */
+@media (max-width: 768px) {
+  .cpage { padding: 120px var(--gutter) 96px; }
+  .chead__rule { margin-top: 40px; }
+  .csteps { gap: 16px; margin-top: 32px; }
+  .csteps li span { display: none; }
+  .clead br { display: none; }
+  .cform { margin-top: 40px; }
+  .cfield__input { font-size: 16px; }
+  .cbtns { flex-direction: column-reverse; }
+  .cbtn { width: 100%; min-width: 0; }
+  .cconfirm__row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cstep.is-in { animation: none; }
+  .cagree__box::after { transition: none; }
+}

@@ -1,0 +1,126 @@
+@charset "UTF-8";
+/* ==========================================================
+   About / Works / Service のヘッダー(769px 以上)
+   トップ・News・Contact(style.css の .header)と同じ見た目。
+   左にロゴ、右にナビ4つ、少しあけて Contact ↗。ホバーで文字が下から入れかわる(main.js)
+   ========================================================== */
+@media (min-width: 769px) {
+  :is(.header, .w-header) {
+    height: auto;
+    justify-content: flex-start;
+    gap: 32px;
+    padding: 20px clamp(16px, 5vw, 64px);
+    font: 500 13px/1.9 "Archivo", "Zen Kaku Gothic New", sans-serif;
+    letter-spacing: .03em;
+  }
+  :is(.header__logo, .w-logo) { font: 600 13px/1.9 "Archivo", "Zen Kaku Gothic New", sans-serif; letter-spacing: .02em; }
+  :is(.header__logo, .w-logo) span { font-size: inherit; font-weight: 400; opacity: .7; margin-left: 4px; }
+  :is(.header__nav, .w-nav) { gap: 28px; margin: 0 0 0 auto; font: inherit; }
+  :is(.header__nav, .w-nav) a { padding: 0; }
+  :is(.header__nav, .w-nav) a:is([aria-current], :hover) { background: none; color: inherit; }
+  :is(.header__nav, .w-nav) a::after { display: none; }
+  :is(.header__contact, .w-nav__contact) { position: relative; margin-left: 40px; }
+}
+
+/* ヘッダーのリンク:ホバーで文字が下から入れかわる(style.css と同じ) */
+.roll { display: inline-block; height: 1.3em; line-height: 1.3; overflow: hidden; vertical-align: middle; }
+.roll__inner { display: block; transition: transform .6s cubic-bezier(.22, 1, .36, 1); }
+.roll__text { display: block; white-space: nowrap; }
+.has-roll.is-rolling .roll__inner { transform: translateY(-50%); }
+.roll__inner.is-reset { transition: none; }
+
+/* ==========================================================
+   About / Works / Service のヘッダーとメニュー(768px 以下)
+   トップ・News・Contact(style.css の .menu-btn / .menu)と同じ見た目と動き。
+   - About は .menu-btn / .a-menu / body.is-menu-open
+   - Works・Service は .w-menu-button / .w-menu / body.w-menu-open
+   ========================================================== */
+@media (max-width: 768px) {
+  /* ヘッダーの配置:トップ・News・Contact(style.css の .header)と同じ。
+     上下20pxの余白、左にロゴ(13px)、ボタンは右上(右の余白はロゴの左と同じ) */
+  :is(.header, .w-header) {
+    height: auto;
+    justify-content: flex-start;
+    gap: 32px;
+    padding: 20px clamp(16px, 5vw, 64px);
+    font: 500 13px/1.9 "Archivo", "Zen Kaku Gothic New", sans-serif;
+    letter-spacing: .03em;
+  }
+  :is(.header__logo, .w-logo) { font: 600 13px/1.9 "Archivo", "Zen Kaku Gothic New", sans-serif; letter-spacing: .02em; }
+  :is(.header__logo, .w-logo) span { font-size: inherit; font-weight: 400; opacity: .7; margin-left: 4px; }
+  :is(.header__contact, .w-nav__contact) { display: none; }
+
+  /* ハンバーガーボタン:細い2本線 → 開くと平たい×になる */
+  :is(.menu-btn, .w-menu-button) {
+    display: block;
+    position: absolute;
+    /* 2本線の右端(ボタンの右端から9px内側)を、ロゴの左と同じ余白の位置にそろえる */
+    top: 0; right: calc(clamp(16px, 5vw, 64px) - 9px);
+    z-index: 230;
+    width: 56px; height: 52px;
+    margin: 0;
+    border: 1.5px solid transparent;
+    transition: border-color .4s;
+  }
+  :is(.menu-btn, .w-menu-button) > span {
+    position: absolute;
+    left: 7px; right: auto; width: 40px; height: 1px;
+    background: currentColor;
+    transition: transform .5s cubic-bezier(.22, 1, .36, 1), top .5s cubic-bezier(.22, 1, .36, 1);
+  }
+  :is(.menu-btn, .w-menu-button) > span:nth-child(1) { top: 21px; }
+  :is(.menu-btn, .w-menu-button) > span:nth-child(2) { top: 28px; }
+  :is(.is-menu-open, .w-menu-open) :is(.header, .w-header) { mix-blend-mode: normal; color: #EEEBE3; transform: none; }
+  :is(.is-menu-open, .w-menu-open) :is(.menu-btn, .w-menu-button) > span:nth-child(1) { top: 24.5px; transform: rotate(17deg); }
+  :is(.is-menu-open, .w-menu-open) :is(.menu-btn, .w-menu-button) > span:nth-child(2) { top: 24.5px; transform: rotate(-17deg); }
+  :is(.is-menu-open, .w-menu-open) { overflow: hidden; }
+
+  /* 全画面メニュー:うっすら見える図形の線(円・半円・グリッド)の上に、文字が下からせり上がる */
+  :is(.a-menu, .w-menu) {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 210;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+    padding: 104px var(--gutter) 40px;
+    overflow-y: auto;
+    background:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 360 720' preserveAspectRatio='xMidYMid slice'%3E%3Cg fill='%23fff' fill-opacity='.025'%3E%3Cpath d='M40 0a90 90 0 0 0 180 0z'/%3E%3Ccircle cx='280' cy='200' r='100'/%3E%3Crect x='80' y='400' width='50' height='100'/%3E%3Crect x='230' y='400' width='50' height='100'/%3E%3Cpath d='M40 590a90 90 0 0 1 180 0z'/%3E%3Cpath d='M180 590h140v130z'/%3E%3C/g%3E%3Cg fill='none' stroke='%23fff' stroke-opacity='.07' stroke-width='.6'%3E%3Cellipse cx='180' cy='180' rx='260' ry='120'/%3E%3Cellipse cx='180' cy='520' rx='240' ry='110'/%3E%3Cpath d='M90 0v720M180 0v720M270 0v720M0 110h360M0 400h360M0 590h360'/%3E%3C/g%3E%3C/svg%3E") center / cover no-repeat,
+      #1C1C1E;
+    color: #EEEBE3;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s cubic-bezier(.22, 1, .36, 1), visibility .5s;
+  }
+  :is(.is-menu-open, .w-menu-open) :is(.a-menu, .w-menu) { opacity: 1; visibility: visible; }
+
+  .menu__list { list-style: none; margin: 0; padding: 0; }
+  .menu__list li { overflow: hidden; }
+  .menu__list a {
+    display: inline-flex;
+    align-items: flex-end;
+    gap: 12px;
+    font: 400 44px/1.25 "Bodoni Moda", serif;
+    letter-spacing: -.02em;
+    transform: translateY(110%);
+    /* 閉じるときは文字を動かさない(メニューが消えきってから位置を戻す) */
+    transition: color .3s, transform 0s .5s;
+  }
+  :is(.is-menu-open, .w-menu-open) .menu__list a { transform: none; transition: transform .9s cubic-bezier(.22, 1, .36, 1), color .3s; }
+  :is(.is-menu-open, .w-menu-open) .menu__list li:nth-child(2) a { transition-delay: .05s; }
+  :is(.is-menu-open, .w-menu-open) .menu__list li:nth-child(3) a { transition-delay: .1s; }
+  :is(.is-menu-open, .w-menu-open) .menu__list li:nth-child(4) a { transition-delay: .15s; }
+  :is(.is-menu-open, .w-menu-open) .menu__list li:nth-child(5) a { transition-delay: .2s; }
+  :is(.is-menu-open, .w-menu-open) .menu__list li:nth-child(6) a { transition-delay: .25s; }
+  .menu__contact { display: flex; align-items: center; justify-content: space-between; }
+  .menu__arrow { margin-bottom: .45em; font: 400 13px/1 "Archivo", sans-serif; }
+  .menu__rule { display: block; width: 22px; height: 1px; margin: 28px 0 32px; background: rgba(238, 235, 227, .5); }
+  .menu__brand { display: flex; align-items: center; gap: 10px; }
+  .menu__brand svg { width: 28px; height: 28px; }
+  .menu__brand p { font: 400 9px/1.3 "Archivo", sans-serif; letter-spacing: .2em; text-transform: uppercase; }
+}
+@media (max-width: 768px) and (hover: hover) {
+  .menu__list a:hover { color: #DCA62A; }
+}

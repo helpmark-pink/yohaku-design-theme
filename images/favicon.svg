@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Yohaku design:藍の四分円と芥子の点。そのあいだの空き = 余白 -->
+  <style>
+    .shape { fill: #2C3E9E; }
+    @media (prefers-color-scheme: dark) { .shape { fill: #EEEBE3; } }
+  </style>
+  <path class="shape" d="M8 56V16A40 40 0 0 1 48 56Z"/>
+  <circle cx="50" cy="14" r="8" fill="#DCA62A"/>
+</svg>

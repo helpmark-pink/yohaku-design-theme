@@ -1,0 +1,45 @@
+.s-hero{height:75svh;min-height:480px;background:#c7dc4b;position:relative;overflow:hidden;display:flex;align-items:center;padding:8vw}.s-hero>p{position:relative;z-index:1;font:500 clamp(58px,8.5vw,150px)/.98 var(--f-display);letter-spacing:-.045em}.s-hero em,.s-service em,.s-process em,.s-contact em{font-family:var(--f-serif);font-weight:400}.s-hero>span{position:absolute;bottom:30px;left:var(--gutter);font-size:11px;letter-spacing:.13em}.s-hero__art{position:absolute;inset:0;transform:translateY(var(--hero-shift,0px))}.s-hero__art i{position:absolute;display:block;width:40vw;height:40vw;border-radius:50%;right:-4vw;top:-12vw;background:#303f31}.s-hero__art i:nth-child(2){right:24vw;top:20vw;background:#e96c3f;border-radius:0 0 50% 50%;width:27vw;height:27vw}.s-hero__art i:nth-child(3){right:-7vw;top:28vw;border-radius:0;background:#b4b9a3;width:30vw;height:30vw;transform:rotate(-20deg)}
+.s-eyebrow{font:500 12px/1.5 var(--f-en);letter-spacing:.1em}.s-lead{padding:150px var(--gutter);text-align:center}.s-lead h2{font-size:clamp(24px,3vw,43px);line-height:1.8;margin:35px 0}.s-lead>p:not(.s-eyebrow){line-height:2.4}.s-lead>a{display:inline-block;margin-top:40px;border-bottom:1px solid;padding-bottom:7px}
+.s-services{background:var(--ink);color:var(--paper)}.s-service{padding:100px var(--gutter) 130px;display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:start;border-bottom:1px solid #ffffff26}.s-service__copy{position:sticky;top:125px}.s-service h2{font:500 clamp(56px,6.7vw,110px)/1.03 var(--f-display);letter-spacing:-.035em;margin:30px 0 40px}.s-service h3{font-size:22px;margin-bottom:25px}.s-service__copy>p:not(.s-eyebrow){max-width:390px;font-size:13px;line-height:2.3;color:#d1d0c6}.s-service ul{list-style:none;margin:35px 0;font-size:12px}.s-service li{border-top:1px solid #ffffff30;padding:13px 0}.s-service li::before{content:'↗';margin-right:15px}.s-service__note{font-size:11px;color:#aaa}.s-photo{min-height:640px;height:85svh;position:relative;overflow:hidden;background:#d4b8a0;color:#242b23}.s-photo--two{background:#b5c5c7}.s-photo--three{background:#a7b28e}.s-photo__placeholder{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;font:400 clamp(110px,17vw,250px)/1 var(--f-serif);background:linear-gradient(135deg,transparent 49.8%,#ffffff40 50%,transparent 50.2%)}.s-photo__placeholder small{font:500 10px/2 var(--f-en);letter-spacing:.18em;margin-top:24px}.s-photo img{height:112%;width:100%;object-fit:cover;position:absolute;top:-6%;transform:translateY(var(--photo-shift,0px))}.s-photo figcaption{position:absolute;bottom:0;left:0;right:0;padding:35px 25px 20px;color:#fff;font-size:11px;background:linear-gradient(transparent,#0008)}
+.s-process{padding:140px var(--gutter);display:grid;grid-template-columns:1fr 1fr;gap:8vw}.s-process h2{font:500 clamp(44px,5vw,80px)/1.1 var(--f-display);margin:30px 0}.s-process__heading{position:sticky;top:125px;align-self:start}.s-process__heading>p:last-child{font-size:13px;line-height:2.2}.s-process ol{list-style:none}.s-process li{display:flex;gap:30px;border-top:1px solid #aaa;padding:35px 0 45px}.s-process li>span{font:400 32px/1 var(--f-serif);color:#6c7356}.s-process h3{font-size:18px;margin-bottom:15px}.s-process li p{font-size:13px;line-height:2.2}
+.s-faq{padding:60px var(--gutter) 150px;max-width:1050px;margin:auto}.s-faq h2{font-size:28px;margin:25px 0 45px}.s-faq details{border-top:1px solid #b7b7ae}.s-faq details:last-child{border-bottom:1px solid #b7b7ae}.s-faq summary{padding:26px 35px 26px 0;cursor:pointer;position:relative;list-style:none;font-size:14px}.s-faq summary::-webkit-details-marker{display:none}.s-faq summary::after{content:'+';position:absolute;right:5px;font-size:24px;top:17px}.s-faq details[open] summary::after{content:'−'}.s-faq details.is-closing summary::after{content:'+'}.s-faq details p{padding:0 35px 25px 0;font-size:13px;line-height:2.2}.s-contact{display:block;padding:70px var(--gutter) 45px;background:#c7dc4b;overflow:hidden}.s-contact>span:first-child{font-size:11px;letter-spacing:.12em}.s-contact strong{display:block;font:500 clamp(80px,14vw,220px)/.95 var(--f-display);letter-spacing:-.04em;margin:45px 0 70px;transition:transform .6s var(--ease)}.s-contact__bottom a{transition:opacity .3s}.s-contact__bottom a:hover{opacity:.6}.s-contact__bottom{display:flex;justify-content:space-between;border-top:1px solid #778142;padding-top:25px;font-size:13px}.s-contact__bottom b{font-size:22px;font-weight:500}.page-service .w-footer{margin:0 var(--gutter)}
+@media(max-width:640px){.s-hero{height:65svh;min-height:410px;padding:8vw 6vw}.s-hero>p{font-size:15vw}.s-hero__art i{width:75vw;height:75vw;right:-35vw;top:-10vw}.s-hero__art i:nth-child(2){width:60vw;height:60vw;right:20vw;top:65vw}.s-hero__art i:nth-child(3){width:50vw;height:50vw;top:90vw}.s-lead{padding:85px 6vw}.s-lead h2{font-size:min(21px,5.8vw)}.s-lead>p:not(.s-eyebrow){font-size:12px}.s-service{grid-template-columns:1fr;gap:40px;padding:65px 6vw 70px}.s-service__copy,.s-process__heading{position:static}.s-service h2{font-size:min(65px,15vw);margin:25px 0}.s-service h3{font-size:20px}.s-photo{height:115vw;min-height:0}.s-photo__placeholder{font-size:150px}.s-process{display:block;padding:80px 6vw}.s-process ol{margin-top:45px}.s-process h2{font-size:48px}.s-faq{padding:15px 6vw 85px}.s-faq h2{font-size:23px}.s-faq summary{font-size:13px}.s-contact{padding:45px 6vw 30px}.s-contact strong{font-size:20vw;margin:40px 0 50px}.s-contact__bottom{font-size:11px;align-items:center}.s-contact__bottom b{font-size:18px}}
+.s-photo__placeholder[hidden]{display:none}
+@media(prefers-reduced-motion:reduce){.s-motion .s-reveal{opacity:1;transform:none}.s-hero__art,.s-photo img{transform:none!important}}
+
+/* ヒーローの図形:画面に入ったら、明暗がはっきり反転する色と元の色を交互に繰り返す(画面外では止める) */
+.s-hero__art i{--c1:#303f31;--c2:#f2f1eb;background:var(--c1)}
+.s-hero__art i:nth-child(2){--c1:#e96c3f;--c2:#ebb4be;background:var(--c1)}
+.s-hero__art i:nth-child(3){--c1:#b4b9a3;--c2:#dca62a;background:var(--c1)}
+@keyframes s-hero-swap{0%,38%{background-color:var(--c1)}50%,88%{background-color:var(--c2)}100%{background-color:var(--c1)}}
+.s-hero.is-looping .s-hero__art i{animation:s-hero-swap 3.6s cubic-bezier(.65,0,.35,1) infinite}
+.s-hero.is-looping .s-hero__art i:nth-child(2){animation-delay:.18s}
+.s-hero.is-looping .s-hero__art i:nth-child(3){animation-delay:.36s}
+@media(prefers-reduced-motion:reduce){.s-hero.is-looping .s-hero__art i{animation:none}}
+/* ヒーローの英文:画面に入ったら右から左へスライドして現れる(2行目は少し遅れて追いかける) */
+.s-motion .s-hero>p{opacity:0;transform:translateX(55vw);transition:transform 1.4s cubic-bezier(.16,1,.3,1),opacity .9s ease}
+.s-motion .s-hero>p em{display:inline-block;transform:translateX(25vw);transition:transform 1.6s cubic-bezier(.16,1,.3,1) .12s}
+.s-motion .s-hero.is-in>p{opacity:1;transform:none}
+.s-motion .s-hero.is-in>p em{transform:none}
+@media(prefers-reduced-motion:reduce){.s-motion .s-hero>p,.s-motion .s-hero>p em{opacity:1;transform:none}}
+/* 写真:About の EVERYDAY PERSPECTIVES と同じく、右から左へひらきながら写真がスライドして現れる */
+.s-motion .s-service .s-photo{clip-path:inset(0 0 0 100%);transition:clip-path 1.4s cubic-bezier(.77,0,.18,1) .2s}
+.s-motion .s-service .s-photo img,.s-motion .s-service .s-photo__placeholder{translate:45% 0;transition:translate 1.8s var(--ease) .2s}
+.s-motion .s-service:has(.s-service__copy.is-visible) .s-photo{clip-path:inset(0)}
+.s-motion .s-service:has(.s-service__copy.is-visible) .s-photo img,.s-motion .s-service:has(.s-service__copy.is-visible) .s-photo__placeholder{translate:0 0}
+@media(prefers-reduced-motion:reduce){.s-motion .s-service__copy>*{opacity:1;transform:none}.s-motion .s-service .s-photo{clip-path:none}.s-motion .s-service .s-photo img,.s-motion .s-service .s-photo__placeholder{translate:none}}
+/* お問い合わせの大きな英文:画面の中央に来たら右から左へスライドして現れる(2行目は少し遅れて追いかける) */
+.s-motion .s-contact strong{opacity:0;transform:translateX(55vw);transition:transform 1.4s cubic-bezier(.16,1,.3,1),opacity .9s ease}
+.s-motion .s-contact strong em{display:inline-block;transform:translateX(25vw);transition:transform 1.6s cubic-bezier(.16,1,.3,1) .12s}
+.s-motion .s-contact.is-in strong{opacity:1;transform:none}
+.s-motion .s-contact.is-in strong em{transform:none}
+@media(prefers-reduced-motion:reduce){.s-motion .s-contact strong,.s-motion .s-contact strong em{opacity:1;transform:none}}
+/* .s-services が画面に入っている間は、ページ全体の背景を一瞬で黒に(切り替えの演出なし) */
+body.s-dark{background:#0d0e0c;color:var(--paper)}
+body.s-dark .s-services{background:#0d0e0c}
+/* .s-process が画面に入ったら、サービス一覧の部分も含めて画面全体をパッと白に(文字は黒に切り替え) */
+body.s-light .s-services{background:var(--paper);color:var(--ink)}
+body.s-light .s-service{border-bottom-color:#19191726}
+body.s-light .s-service__copy>p:not(.s-eyebrow){color:#4a4b45}
+body.s-light .s-service li{border-top-color:#19191730}
+body.s-light .s-service__note{color:#77786f}
